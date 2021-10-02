@@ -11,10 +11,19 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 public class Utils {
 
+	
+	@Value("${google.oauth.callback.uri}")
+	private String CALLBACK_URI;
+
+	@Value("${google.secret.key.path}")
+	private Resource driveSecretKeys;
+
 	@Value("${google.credentials.folder.path}")
 	private Resource credentialsFolder;
 
-
+	@Value("${myapp.temp.path}")
+	private String temporaryFolder;
+	
 	public String getCALLBACK_URI() {
 		return CALLBACK_URI;
 	}
