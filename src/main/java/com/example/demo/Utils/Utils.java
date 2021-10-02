@@ -11,5 +11,15 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 public class Utils {
 
-	
+	@Value("${google.credentials.folder.path}")
+	private Resource credentialsFolder;
+
+	public Resource getCredentialsFolder() {
+		return credentialsFolder;
+	}
+
+	public void setCredentialsFolder(Resource credentialsFolder) {
+		this.credentialsFolder = credentialsFolder;
+	}
+
 }
