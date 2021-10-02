@@ -1,4 +1,4 @@
-package com.munsif.ssd.oauth.model;
+package com.example.demo.model;
 
 import org.springframework.web.multipart.MultipartFile;
 

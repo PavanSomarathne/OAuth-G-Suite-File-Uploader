@@ -12,10 +12,10 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.http.FileContent;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
-import com.munsif.ssd.oauth.constant.ApplicationConstant;
-import com.munsif.ssd.oauth.service.AuthorizationService;
-import com.munsif.ssd.oauth.service.DriveService;
-import com.munsif.ssd.oauth.util.ApplicationConfig;
+import com.example.demo.constant.ApplicationConstant;
+import com.example.demo.service.AuthorizationService;
+import com.example.demo.service.DriveService;
+
 
 @Service
 public class DriveServiceImpl implements DriveService {

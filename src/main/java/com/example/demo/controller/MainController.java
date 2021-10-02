@@ -1,4 +1,4 @@
-package com.munsif.ssd.oauth.controller;
+package com.example.demo.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.munsif.ssd.oauth.model.UploadFile;
-import com.munsif.ssd.oauth.service.AuthorizationService;
-import com.munsif.ssd.oauth.service.DriveService;
+import com.example.demo.model.UploadFile;
+import com.example.demo.service.AuthorizationService;
+import com.example.demo.service.DriveService;
 
 @Controller
 public class MainController {
