@@ -31,7 +31,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 	private FileDataStoreFactory dataStoreFactory;
 
 	@Autowired
-	private ApplicationConfig config;
+	private Utils config;
 
 	@PostConstruct
 	public void init() throws Exception {
