@@ -18,9 +18,10 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeReque
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.util.store.FileDataStoreFactory;
-import com.munsif.ssd.oauth.constant.ApplicationConstant;
-import com.munsif.ssd.oauth.service.AuthorizationService;
-import com.munsif.ssd.oauth.util.ApplicationConfig;
+import com.example.demo.constant.ApplicationConstant;
+import com.example.demo.service.AuthorizationService;
+import com.example.demo.service.DriveService;
+import com.example.demo.Utils.Utils;
 
 @Service
 public class AuthorizationServiceImpl implements AuthorizationService {

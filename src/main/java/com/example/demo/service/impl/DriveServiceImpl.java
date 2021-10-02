@@ -15,7 +15,7 @@ import com.google.api.services.drive.model.File;
 import com.example.demo.constant.ApplicationConstant;
 import com.example.demo.service.AuthorizationService;
 import com.example.demo.service.DriveService;
-
+import com.example.demo.Utils.Utils;
 
 @Service
 public class DriveServiceImpl implements DriveService {
@@ -28,7 +28,7 @@ public class DriveServiceImpl implements DriveService {
 	AuthorizationService authorizationService;
 
 	@Autowired
-	ApplicationConfig applicationConfig;
+	Utils applicationConfig;
 
 	@PostConstruct
 	public void init() throws Exception {

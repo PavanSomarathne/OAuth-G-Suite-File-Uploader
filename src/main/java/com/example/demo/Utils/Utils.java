@@ -1,4 +1,4 @@
-package com.munsif.ssd.oauth.util;
+package com.example.demo.Utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
