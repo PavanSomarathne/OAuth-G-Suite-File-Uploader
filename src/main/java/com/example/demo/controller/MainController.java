@@ -28,7 +28,7 @@ public class MainController {
 	DriveService driveService;
 
 	/**
-	 * Handles the root request. Checks if user is already authenticated via SSO.
+	 * root route check for authenticated status.
 	 * 
 	 * @return
 	 * @throws Exception
@@ -45,7 +45,7 @@ public class MainController {
 	}
 
 	/**
-	 * Directs to login
+	 * render login page
 	 * 
 	 * @return
 	 */
@@ -55,7 +55,7 @@ public class MainController {
 	}
 
 	/**
-	 * Directs to home
+	 * render home page
 	 * 
 	 * @return
 	 */
@@ -65,7 +65,7 @@ public class MainController {
 	}
 
 	/**
-	 * Calls the Google OAuth service to authorize the app
+	 *  authorize the app using oauth service
 	 * 
 	 * @param response
 	 * @throws Exception
@@ -77,8 +77,7 @@ public class MainController {
 	}
 
 	/**
-	 * Applications Callback URI for redirection from Google auth server after user
-	 * approval/consent
+	 *Oauth Callback handling
 	 * 
 	 * @param request
 	 * @return
@@ -98,7 +97,7 @@ public class MainController {
 	}
 
 	/**
-	 * Handles logout
+	 * Handle Logout
 	 * 
 	 * @return
 	 * @throws Exception 
@@ -111,7 +110,7 @@ public class MainController {
 	}
 
 	/**
-	 * Handles the files being uploaded to GDrive
+	 * File Upload handling
 	 * 
 	 * @param request
 	 * @param uploadedFile
