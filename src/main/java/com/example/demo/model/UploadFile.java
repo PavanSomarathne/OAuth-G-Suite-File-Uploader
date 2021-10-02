@@ -4,7 +4,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class UploadFile {
 
-	// private static final long serialVersionUID = 1L;
 	private MultipartFile multipartFile;
 
 	public MultipartFile getMultipartFile() {
