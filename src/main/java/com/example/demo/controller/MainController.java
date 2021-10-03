@@ -20,6 +20,8 @@ import com.example.demo.model.UploadFile;
 import com.example.demo.service.AuthorizationService;
 import com.example.demo.service.DriveService;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Controller
@@ -130,13 +132,18 @@ public class MainController {
 	@PostMapping("/upload")
 	public String uploadFile(HttpServletRequest request, @ModelAttribute UploadFile uploadedFile) throws Exception {
 		MultipartFile multipartFile = uploadedFile.getMultipartFile();
+		String fileName = uploadedFile.getMultipartFile().getOriginalFilename();
 		driveService.uploadFile(multipartFile);
 		CalendarEvent event = new CalendarEvent();
-		event.setDate("2021-10-03");
-		event.setStartTime("12:20");
-		event.setEndTime("13:20");
-		event.setDescription("Test");
-		event.setTitle("Test TT");
+		LocalDate date = LocalDate.now();
+		LocalTime time = LocalTime.now();
+		LocalTime endtime = LocalTime.now().plusMinutes(30);
+		event.setDate(date.toString());
+		event.setStartTime(time.toString());
+		event.setEndTime(endtime.toString());
+		event.setDescription("File"+fileName+" has uploaded to your google drive successfully");
+		event.setTitle("File"+fileName+" has uploaded");
+		System.out.println(event);
 		calendarService.createNewEvent(event);
 		return "redirect:/home?status=success";
 	}
