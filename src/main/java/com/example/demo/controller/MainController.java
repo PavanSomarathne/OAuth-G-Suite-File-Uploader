@@ -20,8 +20,10 @@ import com.example.demo.model.UploadFile;
 import com.example.demo.service.AuthorizationService;
 import com.example.demo.service.DriveService;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Controller
@@ -37,6 +39,8 @@ public class MainController {
 
 	@Autowired
 	GoogleCalendarService calendarService;
+
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 
 	/**
 	 * root route check for authenticated status.
@@ -139,8 +143,8 @@ public class MainController {
 		LocalTime time = LocalTime.now();
 		LocalTime endtime = LocalTime.now().plusMinutes(30);
 		event.setDate(date.toString());
-		event.setStartTime(time.toString());
-		event.setEndTime(endtime.toString());
+		event.setStartTime(time.format(dtf));
+		event.setEndTime(endtime.format(dtf));
 		event.setDescription("File"+fileName+" has uploaded to your google drive successfully");
 		event.setTitle("File"+fileName+" has uploaded");
 		System.out.println(event);
