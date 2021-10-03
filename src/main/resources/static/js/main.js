@@ -10,7 +10,7 @@ function onUploadComplete(e) {
 		var bar = document.getElementById('bar');
 		bar.style.width = '100%';
 		bar.innerHTML = '100% complete';
-		swal("Success!", "Finished uploading file(s)", "success");
+		swal("Success!", "Finished uploading file(s) and History is recorded to the calender", "success");
 	}
 }
 

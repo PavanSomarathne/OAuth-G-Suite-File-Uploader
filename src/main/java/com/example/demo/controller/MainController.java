@@ -145,8 +145,8 @@ public class MainController {
 		event.setDate(date.toString());
 		event.setStartTime(time.format(dtf));
 		event.setEndTime(endtime.format(dtf));
-		event.setDescription("File"+fileName+" has uploaded to your google drive successfully");
-		event.setTitle("File"+fileName+" has uploaded");
+		event.setDescription("File "+fileName+" has uploaded to your google drive successfully");
+		event.setTitle("File "+fileName+" has uploaded");
 		System.out.println(event);
 		calendarService.createNewEvent(event);
 		return "redirect:/home?status=success";
@@ -164,17 +164,33 @@ public class MainController {
 		return "redirect:/home?status=success";
 	}
 
-	@PostMapping("/events")
-    public String addNewEvent(@ModelAttribute CalendarEvent calendarEvent, Model model) {
-        try {
-            logger.info("Adding a new calendar event");
-            calendarService.createNewEvent(calendarEvent);
-            return Utils.REDIRECT_TO_EVENTS_PAGE;
-        } catch (Exception e) {
-            logger.error("Exception occured when adding new event. {}", e);
-            model.addAttribute(Utils.ERROR, e.getMessage());
-            return Utils.ERROR;
-        }
+	// @PostMapping("/events")
+    // public String addNewEvent(@ModelAttribute CalendarEvent calendarEvent, Model model) {
+    //     try {
+    //         logger.info("Adding a new calendar event");
+    //         calendarService.createNewEvent(calendarEvent);
+    //         return Utils.REDIRECT_TO_EVENTS_PAGE;
+    //     } catch (Exception e) {
+    //         logger.error("Exception occured when adding new event. {}", e);
+    //         model.addAttribute(Utils.ERROR, e.getMessage());
+    //         return Utils.ERROR;
+    //     }
 
-    }
+    // }
+	@GetMapping("/events")
+	public String getEventList(Model model) {
+	       try {
+
+	//            logger.info("Retreaving latest calendar events list.");
+	           model.addAttribute("events", calendarService.getLatestEventList());
+	           return "events.html";
+	
+	       } catch (Exception e) {
+	           logger.error("Exception occured when retreaving events. {}", e);
+	           model.addAttribute(Utils.ERROR, e.getMessage());
+	           return Utils.ERROR;
+	       }
+	
+	}
+
 }

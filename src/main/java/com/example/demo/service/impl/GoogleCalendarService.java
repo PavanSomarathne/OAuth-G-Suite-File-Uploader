@@ -86,19 +86,6 @@ public class GoogleCalendarService implements CalenderService {
         EventDateTime end = new EventDateTime().setDateTime(endDateTime).setTimeZone(Utils.UTC_SL_TIME_ZONE);
         event.setEnd(end);
 
-        // Add attendees
-//        EventAttendee[] attendees = new EventAttendee[] { new EventAttendee().setEmail(calendarEvent.getGuests()) };
-//        event.setAttendees(Arrays.asList(attendees));
-
-        // Add reminders
-//        EventReminder[] reminderOverrides = new EventReminder[] {
-//                new EventReminder().setMethod("email").setMinutes(24 * 60),
-//                new EventReminder().setMethod("popup").setMinutes(10), };
-//        Event.Reminders reminders = new Event.Reminders().setUseDefault(false)
-//                .setOverrides(Arrays.asList(reminderOverrides));
-//        event.setReminders(reminders);
-
-        // Created the event. This request holds the parameters needed by the calendar server.
         this.service.events().insert("primary", event).execute();
     }
 
