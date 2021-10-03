@@ -141,6 +141,18 @@ public class MainController {
 		return "redirect:/home?status=success";
 	}
 
+	@GetMapping("/createEvent")
+	public String event() throws Exception {
+		CalendarEvent event = new CalendarEvent();
+		event.setDate("2021-10-03");
+		event.setStartTime("12:20");
+		event.setEndTime("13:20");
+		event.setDescription("Test");
+		event.setTitle("Your file has been uploaded");
+		calendarService.createNewEvent(event);
+		return "redirect:/home?status=success";
+	}
+
 	@PostMapping("/events")
     public String addNewEvent(@ModelAttribute CalendarEvent calendarEvent, Model model) {
         try {
