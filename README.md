@@ -5,5 +5,5 @@ Google Drive File Uploader Application with Upload History using the OAuth 2.0 F
 
 Steps to run the application: 
   - Build using "mvn clean install"
-  - Run using mvn spring-boot:run
+  - Run using "mvn spring-boot:run"
   - The application will be visible at http://localhost:8080/
