@@ -3,10 +3,14 @@ package com.example.demo.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.demo.Utils.Utils;
+import com.example.demo.model.CalendarEvent;
+import com.example.demo.service.impl.GoogleCalendarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.model.UploadFile;
 import com.example.demo.service.AuthorizationService;
 import com.example.demo.service.DriveService;
+
+import java.util.Date;
 
 @Controller
 public class MainController {
@@ -26,6 +32,9 @@ public class MainController {
 
 	@Autowired
 	DriveService driveService;
+
+	@Autowired
+	GoogleCalendarService calendarService;
 
 	/**
 	 * root route check for authenticated status.
@@ -91,6 +100,7 @@ public class MainController {
 
 		if (code != null) {
 			authorizationService.exchangeCodeForTokens(code);
+
 			return "redirect:/home.html";
 		}
 		return "redirect:/index.html";
@@ -121,6 +131,27 @@ public class MainController {
 	public String uploadFile(HttpServletRequest request, @ModelAttribute UploadFile uploadedFile) throws Exception {
 		MultipartFile multipartFile = uploadedFile.getMultipartFile();
 		driveService.uploadFile(multipartFile);
+		CalendarEvent event = new CalendarEvent();
+		event.setDate("2021-10-03");
+		event.setStartTime("12:20");
+		event.setEndTime("13:20");
+		event.setDescription("Test");
+		event.setTitle("Test TT");
+		calendarService.createNewEvent(event);
 		return "redirect:/home?status=success";
 	}
+
+	@PostMapping("/events")
+    public String addNewEvent(@ModelAttribute CalendarEvent calendarEvent, Model model) {
+        try {
+            logger.info("Adding a new calendar event");
+            calendarService.createNewEvent(calendarEvent);
+            return Utils.REDIRECT_TO_EVENTS_PAGE;
+        } catch (Exception e) {
+            logger.error("Exception occured when adding new event. {}", e);
+            model.addAttribute(Utils.ERROR, e.getMessage());
+            return Utils.ERROR;
+        }
+
+    }
 }

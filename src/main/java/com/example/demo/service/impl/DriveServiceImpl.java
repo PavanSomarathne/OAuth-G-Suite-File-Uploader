@@ -55,6 +55,8 @@ public class DriveServiceImpl implements DriveService {
 		File file = driveService.files().create(fileMetadata, mediaContent).setFields("id").execute();
 
 		logger.debug("File ID: " + file.getName() + ", " + file.getId());
+
+
 	}
 
 }
