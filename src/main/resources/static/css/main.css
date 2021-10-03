@@ -10,9 +10,11 @@ body {
 }
 
 #progressBar {
-	background-color: #f7f9fc;
-	height: 40px;
+	background-color: #ffffff;
+	height: 15px;
+	margin-top: 5px;
 	margin-bottom: 20px;
+	border:1px solid rgb(21, 255, 0);
 }
 
 #bar {
@@ -36,4 +38,16 @@ body {
 
 #footer-number, #footer-campus {
 	margin-left: 10px;
+}
+.body-container{
+    background-color:rgb(241, 241, 241);
+    border-radius:10px;
+    padding: 50px;
+    margin-top: 50px;
+}
+.head-container{
+    background-color:rgb(219, 219, 219);
+    border-radius:10px;
+    padding: 50px;
+    margin-top: 50px;
 }
